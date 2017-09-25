@@ -1,0 +1,8 @@
+<%= @list.title %>
+<%= @list.date %>
+<%= @list.due_date %>
+<img src=<%=@list.file_location %> />
+<%= simple_format(@list.description) %>
+<%= simple_format(@list.detail) %>
+
+<%= link_to 'Back to index', lists_path %>
