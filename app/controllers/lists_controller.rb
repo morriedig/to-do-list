@@ -25,15 +25,18 @@ class ListsController < ApplicationController
 	end
 
 	def destroy
-	  @list.destroy
-
-	  redirect_to lists_url
+		if( Time.now >= :due_date)
+			redirect_to lists_url
+		else
+		  @list.destroy
+		  redirect_to lists_url
+		end
 	end
 
 	private
 
 	def list_params
-		params.require(:list).permit(:title, :date,:due_date , :description, :detail)
+		params.require(:list).permit(:title, :date,:due_date , :description, :detail, :file_location)
 	end
 
 	def set_list

@@ -1,12 +1,48 @@
-<ul>
+<style type="text/css">
+	h3{
+		font-size: 36px;
+	}
+	.ul{
+		list-style: none;
+	}
+	.ul div{
+		display: inline-block;
+		padding-left:20px; 
+	}
+	.list{
+		color: gray;
+		font-size: 24px;
+		line-height: 1.5em;
+	}
+	.list:hover{
+		text-decoration: none;
+		color:#333333;
+	}
+	.new_list{
+		color: black;
+		font-size: 18px;
+		margin-left: 60px; 
+	}
+	.new_list:fover{
+		text-decoration: none;
+		color: blue;
+	}
+</style>
+
+
+
+<div class="container">
+<ul class="ul">
   <% @lists.each do |list| %>
-    <li>
-      <%= list.title %>
-      <%= link_to 'Show', list_path(list) %>
-      <%= link_to 'Edit', edit_list_path(list) %>
-      <%= link_to 'Destroy', list_path(list), method: :delete, data:{ confirm: "Are you sure?"} %>
-    </li>
+    <div>
+      <h3><%= list.title %></h3>
+      <li><%= link_to 'Show', list_path(list), class: "list" %></li>
+      <li><%= link_to 'Edit', edit_list_path(list), class: "list" %></li>
+      <li><%= link_to 'Destroy', list_path(list),class: "list", method: :delete, data:{ confirm: "Are you sure?"} %></li>
+     </div>
   <% end %>
+
 </ul>
 
-<%= link_to 'New List', new_list_path %>
+<%= link_to 'New List', new_list_path, class: "new_list" %>
+</div>
