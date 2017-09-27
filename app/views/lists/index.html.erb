@@ -1,6 +1,13 @@
 <style type="text/css">
+	body{
+		background: #EEFFBB;
+	}
+	h1{
+		text-align: center;
+	}
 	h3{
 		font-size: 36px;
+		text-align: center;
 	}
 	.ul{
 		list-style: none;
@@ -12,6 +19,10 @@
 		border-radius: 5px;
 		width: 300px;
 		margin: 15px;
+		box-shadow: 0 1px 3px 1px black;
+	}
+	.ul div:hover{
+		transform: scale(1.1,1.1);
 	}
 	.list{
 		color: gray;
@@ -27,26 +38,23 @@
 		font-size: 18px;
 		margin-left: 60px; 
 	}
-	.new_list:fover{
-		text-decoration: none;
-		color: blue;
-	}
 </style>
 
 
 
 <div class="container">
-<ul class="ul">
-  <% @lists.each do |list| %>
-    <div>
-      <h3><%= list.title %></h3>
-      <li><%= link_to 'Show', list_path(list), class: "list" %></li>
-      <li><%= link_to 'Edit', edit_list_path(list), class: "list" %></li>
-      <li><%= link_to 'Destroy', list_path(list),class: "list", method: :delete, data:{ confirm: "Are you sure?"} %></li>
-     </div>
-  <% end %>
+	<h1>To DO List</h1>
+	<ul class="ul">
+	  <% @lists.each do |list| %>
+	    <div>
+	      <h3><%= list.title %></h3>
+	      <li><%= link_to 'Show', list_path(list), class: "list" %></li>
+	      <li><%= link_to 'Edit', edit_list_path(list), class: "list" %></li>
+	      <li><%= link_to 'Destroy', list_path(list),class: "list", method: :delete, data:{ confirm: "Are you sure?"} %></li>
+	     </div>
+	  <% end %>
 
-</ul>
+	</ul>
 
-<%= link_to 'New List', new_list_path, class: "new_list" %>
+	<%= link_to 'New List', new_list_path, class: "new_list btn btn-default" %>
 </div>
