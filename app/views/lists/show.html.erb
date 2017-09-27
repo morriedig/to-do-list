@@ -15,6 +15,12 @@
 		font-size: 12px;
 		line-height: 1.5em;
 	}
+	.image{
+		width: 100%
+	}
+	.img{
+		margin: 5px auto;
+	}
 	.desk{
 		width: 60%;
 		margin:10px auto;
@@ -41,7 +47,7 @@
 			<p>update: <%= @list.date %></p>
 			<p>due date: <%= @list.due_date %></p>
 		</div>
-		<div> <%= image_tag @list.file_location.url, class: "thumbnail img" %></div>
+		<div class="image"> <%= image_tag @list.file_location.url, class: "thumbnail img" %></div>
 		<div class="desk">
 			<h2><%= simple_format(@list.description) %></h2>
 			<h6><%= simple_format(@list.detail) %></h6>

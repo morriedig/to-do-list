@@ -25,7 +25,7 @@ class ListsController < ApplicationController
 	end
 
 	def destroy
-		if( Time.now >= :due_date)
+		if( Time.now.to_s >= @list.due_date.to_s)
 			redirect_to lists_url
 		else
 		  @list.destroy
