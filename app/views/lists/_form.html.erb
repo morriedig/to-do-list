@@ -4,6 +4,8 @@
   }
 </style>
 
+<%= render :partial => "header" %>
+
 <% if @list.errors.present? %>
 <div class="container">
 	<ul style="list-style: none;border:1px solid black; border-radius: 5px;">
@@ -23,11 +25,11 @@
   </div>
   <div class="form-group">
     <%= f.label :date, "Date" %>
-    <%= f.text_field :date, class: "form-control" %>
+    <%= f.text_field :date, class: "form-control", value: "#{Time.now.strftime('%Y-%m-%d')}", readonly: "readonly" %>
     </div>
     <div class="form-group">
     <%= f.label :date, "Due Date" %>
-    <%= f.text_field :due_date , class: "form-control" %>
+    <%= f.text_field :due_date , value: "#{Time.now.strftime('%Y-%m-%d')}", class: "form-control" %>
     </div>
     <div class="form-group">
     <%= f.label :description, "Description" %>
@@ -44,3 +46,5 @@
     <%= f.submit class: "btn btn-default" %>
   <% end %>
 </div>
+
+<%= render :partial => 'footer' %>

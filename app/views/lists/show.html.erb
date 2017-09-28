@@ -9,19 +9,24 @@
 	.show h1{
 		text-align: center;
 	}
-	.date{
+/*	.date{
 		text-align: left;
-	}
-	.date p{
+	}*/
+	.date{
 		display: inline-block;
 		padding: 3px 10px;
 		font-size: 12px;
 		line-height: 1.5em;
+
+	}
+	.due_date{
+		display: inline-block;
+		float: right;
 	}
 	.image{
 		width: 100%
 	}
-	.img{
+	.show .img{
 		margin: 5px auto;
 	}
 	.desk{
@@ -42,13 +47,17 @@
 		float: right;
 	}
 </style>
-
+<%= render :partial => "header" %>
 <div class="container">
 	<div class="show">
 		<h1><%= @list.title %></h1>
+		<div>
 		<div class="date">
 			<p>update: <%= @list.date %></p>
-			<p>due date: <%= @list.due_date %></p>
+		</div>
+		<div class="due_date">
+			<p >due date: <%= @list.due_date %></p>
+		</div>
 		</div>
 		<div class="image"> <%= image_tag @list.file_location.url, class: "thumbnail img" %></div>
 		<div class="desk">
@@ -58,3 +67,6 @@
 		<%= link_to 'Back to index', lists_path, class: "btn btn-default back" %>
 	</div>
 </div>
+<hr>
+
+<%= render :partial => "footer" %>
