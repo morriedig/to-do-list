@@ -1,0 +1,47 @@
+<div class="track">		
+	<div class="container">
+		<div class="track row">
+			<div class="col-lg-1">
+			<h4>Progress</h4>
+			</div>
+			<% @list.tracks.each do |i| %>
+				<div class="col-lg-2">
+				<h4>
+					<%= i.date %>
+				</h4>
+				</div>
+				<div class="col-lg-2">
+				<h4>
+				<%= i.commenter %>
+				</h4>
+				</div>
+				<div class="col-lg-4">
+				<h4>
+				<%= i.body %>
+				</h4>
+				</div>
+				<div class="col-lg-3">
+				
+				<%= link_to "delete" , [i.list, i], method: :delete, data:{ confirm: "Are you sure?" } , class: "btn btn-default" %>
+				</p>
+				</div>
+		</div>
+		<% end %>
+		<h2>Add a track</h2>
+		<div class="form-group row">
+		<%= form_for([@list, @list.tracks.build]) do |f| %>
+			<div class="col-lg-2">
+			<%= f.text_field :commenter,class: 'form-control', placeholder: "commenter" %>
+			</div>
+			<div class="col-lg-2">
+			<%= f.text_field :date, class: 'form-control',value: "#{Time.now.strftime('%Y-%m-%d')}", readonly: "readonly"%>
+			</div>
+			<div class="col-lg-6">
+			<%= f.text_field :body,class: 'form-control',placeholder: "content" %>
+			</div>
+			<%= f.submit class: "btn btn-default" %>
+			</div>
+		<% end %>
+		<%= link_to 'Back to index', lists_path, class: "btn btn-default back" %>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
-	http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
-	
+	# http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+
 	def create
 		@list = List.find(params[:list_id])
 		@track = @list.tracks.create(track_params)
@@ -8,11 +8,11 @@ class TracksController < ApplicationController
 	end
 
 	def destroy
-		@list = List.find(params[:list_id])
-		@track = @list.tracks.find(params[:id])
-		@track.destroy
-		redirect_to list_path(@list)
-	end
+    @list = List.find(params[:list_id])
+    @track = @list.tracks.find(params[:id])
+    @track.destroy
+    redirect_to list_path(@list)
+  end
 
 	private
 	def track_params
