@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
 	before_action :set_list, :only => [:show, :edit, :update, :destroy]
 	# http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+	def show
+	end
 
 	def index
 		@lists = List.order(:due_date)
@@ -18,7 +20,6 @@ class ListsController < ApplicationController
 			render :new
 		end
 	end
-
 
 	def update
 	  @list.update_attributes(list_params)
@@ -42,7 +43,7 @@ class ListsController < ApplicationController
 	end
 
 	def set_list
-		@list = List.find(params[:id])
+		@list = List.find_by(params[:id])
 	end
 
 end

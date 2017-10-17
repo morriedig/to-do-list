@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170930032146) do
 
-  create_table "lists", force: :cascade do |t|
+  create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.date "date"
     t.date "due_date"
@@ -23,21 +23,15 @@ ActiveRecord::Schema.define(version: 20170930032146) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tracks", force: :cascade do |t|
+  create_table "tracks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "commenter"
     t.string "date"
     t.text "body"
-    t.integer "list_id"
+    t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_tracks_on_list_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "user"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "tracks", "lists"
 end

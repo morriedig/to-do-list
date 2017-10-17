@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :lists do
   	resources :tracks
   end
-  # root 'lists#index'
+  root 'lists#index'
 end

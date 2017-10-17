@@ -65,7 +65,7 @@
 	<ul class="ul">
 	  <%  @lists.each do |list| %>
 	    <div>
-	      <h3><%=link_to list.title,  list_path(list) %></h3>
+	      <h3><%= list.title %></h3>
 	      <h6> Due date: <%= list.due_date %></h6>
 	      <li><%= link_to 'Show', list_path(list), class: "list" %></li>
 	      <li><%= link_to 'Edit', edit_list_path(list), class: "list" %></li>
